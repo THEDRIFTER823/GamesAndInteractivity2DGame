@@ -86,6 +86,11 @@ public class Timer : MonoBehaviour
         
     }
 
+    public void UpdateTimerDuration()
+    {
+        timeToWait = currentTimeLeft;
+    }
+
     public void SetTimerDuration(float amount)
     {
         timeToWait = amount;
