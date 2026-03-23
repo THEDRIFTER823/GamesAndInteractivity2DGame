@@ -121,7 +121,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 191
-        width: 49
+        width: 48
         height: 33
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -190,7 +190,7 @@ TextureImporter:
         width: 48
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -212,7 +212,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -221,6 +221,28 @@ TextureImporter:
       bones: []
       spriteID: 4a97080b3cfeace468f837ce9c61e4ea
       internalID: 1770215296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props-01_5
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 160
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f00818d8dd094634b8a749676b8ac28b
+      internalID: 642700319
       vertices: []
       indices: 
       edges: []
@@ -244,6 +266,7 @@ TextureImporter:
       Props-01_2: -616305581
       Props-01_3: 1040936625
       Props-01_4: 1770215296
+      Props-01_5: 642700319
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

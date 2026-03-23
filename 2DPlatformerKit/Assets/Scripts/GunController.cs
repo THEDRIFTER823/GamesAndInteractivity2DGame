@@ -14,64 +14,73 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<SpriteRenderer>().flipX)
+        if (gameObject.tag == "Player")
         {
-            if (Input.GetAxisRaw("Vertical") < 0.0f)
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 45);
-            }
-            else if (Input.GetAxisRaw("Vertical") > 0.0f)
-            {
-                transform.rotation = Quaternion.Euler(0, 0, -45);
-            }
-            else
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
-        }
-        else
-        {
-            if (Input.GetAxisRaw("Vertical") < 0.0f)
-            {
-                transform.rotation = Quaternion.Euler(0, 0, -45);
-            }
-            else if (Input.GetAxisRaw("Vertical") > 0.0f)
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 45);
-            }
-            else
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
-        }
-
-        if (Input.GetAxisRaw("Horizontal") < 0.0f)
-        {
-            GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else if (Input.GetAxisRaw("Horizontal") > 0.0f)
-        {
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
-
-        if (Input.GetKeyDown("c"))
-        {
-            // Use the FirePoint's Right axis. This is a unit vector (length of 1).
-            Vector2 shootDirection = Vector2.right;
-
-            // If you are flipping the sprite, the 'Right' axis might need to be inverted
             if (GetComponent<SpriteRenderer>().flipX)
             {
-                shootDirection *= -1;
+                if (Input.GetAxisRaw("Vertical") < 0.0f)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 45);
+                }
+                else if (Input.GetAxisRaw("Vertical") > 0.0f)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, -45);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
             }
-            Debug.Log(shootDirection);
-            Launch(shootDirection);
+            else
+            {
+                if (Input.GetAxisRaw("Vertical") < 0.0f)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, -45);
+                }
+                else if (Input.GetAxisRaw("Vertical") > 0.0f)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 45);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+            }
+            if (Input.GetAxisRaw("Horizontal") < 0.0f)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else if (Input.GetAxisRaw("Horizontal") > 0.0f)
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+            if (Input.GetKeyDown("c"))
+            {
+                // Use the FirePoint's Right axis. This is a unit vector (length of 1).
+                Vector2 shootDirection = Vector2.right;
+
+                // If you are flipping the sprite, the 'Right' axis might need to be inverted
+                if (GetComponent<SpriteRenderer>().flipX)
+                {
+                    shootDirection *= -1;
+                }
+                Debug.Log(shootDirection);
+                Launch(shootDirection);
+            }
         }
     }
 
     void Launch(Vector2 direction)
     {
         GameObject projectileObject = Instantiate(rifleBullet, firePoint.transform.position, Quaternion.identity);
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.Launch(direction, launchForce);
+    }
+
+    public void DroneFire()
+    {
+        Vector2 direction = (firePoint.transform.position - transform.position).normalized;
+        GameObject projectileObject = Instantiate(rifleBullet, transform.position, Quaternion.identity);
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(direction, launchForce);
     }

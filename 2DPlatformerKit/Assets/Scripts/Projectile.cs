@@ -1,7 +1,8 @@
 using UnityEngine;
-
+using UnityEngine.Events;
 public class Projectile : MonoBehaviour
 {
+    public UnityEvent<GameObject> collisionEnterEvent;
     Rigidbody2D rigidbody2d;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -31,6 +32,8 @@ public class Projectile : MonoBehaviour
         // }
         // GetComponent<Collider2D>().enabled = false;
         // animator.SetTrigger("destroy");
+        if (other.gameObject.tag == "Player")
+            other.gameObject.GetComponent<PlayerController>().Respawn();
         rigidbody2d.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
         Destroy(gameObject);
     }

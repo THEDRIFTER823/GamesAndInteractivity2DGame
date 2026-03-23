@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System;
 public class PlayerCling : MonoBehaviour
 {
     [SerializeField] PhysicsObjectManipulator pom;
@@ -16,7 +16,7 @@ public class PlayerCling : MonoBehaviour
         if (pom != null)
         {
             if (Input.GetAxisRaw("Horizontal") != 0)
-                pom.forceToAdd = 500 * new Vector3(Input.GetAxisRaw("Horizontal"), 1, 0);
+                pom.forceToAdd = new Vector3(Math.Abs(pom.forceToAdd.x)*Input.GetAxisRaw("Horizontal"), pom.forceToAdd.y, 0);
             else
                 if (Input.GetKeyDown("w"))
                    pom.forceToAdd = 500 * new Vector3(0, 1, 0); 

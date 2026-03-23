@@ -81,4 +81,9 @@ public class PhysicsObjectManipulator : MonoBehaviour
         aObject.GetComponent<Rigidbody2D>().AddForce(forceToAdd);
         if (consoleLog) Debug.Log("Applying Force to Object: " + gameObject.name);
     }
+
+    public void SetForce(float y)
+    {
+        forceToAdd = new Vector3(500*1.5f, y, forceToAdd.z);
+    }
 }
