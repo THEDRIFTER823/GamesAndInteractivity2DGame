@@ -86,4 +86,8 @@ public class PhysicsObjectManipulator : MonoBehaviour
     {
         forceToAdd = new Vector3(500*1.5f, y, forceToAdd.z);
     }
+    public void ResetForce()
+    {
+        forceToAdd = new Vector3(500, 500, forceToAdd.z);
+    }
 }
