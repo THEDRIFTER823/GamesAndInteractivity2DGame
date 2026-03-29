@@ -10,17 +10,28 @@ public class TitleScreenController : MonoBehaviour
 
     public void Update()
     {
-        if (!startPressed && Input.anyKey)
-        {
-            startPressed = true;
-            StartCoroutine(StartGameEnumerator());
-        }
+        // if (!startPressed && Input.anyKey)
+        // {
+        //     startPressed = true;
+        //     StartCoroutine(StartGameEnumerator());
+        // }
     }
 
     private IEnumerator StartGameEnumerator()
     {
+        Debug.Log("Fading");
         if (animator != null) animator.SetTrigger("begin");
         yield return new WaitForSeconds(timeToWait);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void StartFade()
+    {
+        Debug.Log("Pressed");
+        if (!startPressed)
+        {
+            startPressed = true;
+            StartCoroutine(StartGameEnumerator());
+        }
     }
 }
