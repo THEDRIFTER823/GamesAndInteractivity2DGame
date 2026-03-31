@@ -4,6 +4,7 @@ public class TrashSorter : MonoBehaviour
 {
     [SerializeField] string colorType;
     [SerializeField] Collector collector;
+    bool complete = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,7 +22,11 @@ public class TrashSorter : MonoBehaviour
         if (other.name == colorType)
         {
             Destroy(other.gameObject);
-            collector.CollectOne();
+            if (!complete)
+            {
+                collector.CollectOne();
+                complete = true;
+            }
         }
     }
 }
